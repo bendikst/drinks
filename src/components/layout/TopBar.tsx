@@ -4,7 +4,7 @@ import { ColorSet } from '../../resources/colors';
 
 const TopBarWrapper = styled.header`
     display: flex;
-    padding: 24px 32 px;
+    padding: 1em 1em;
     align-items: center;
     justify-content: space-between;
     background-color: ${ColorSet.BLUE};

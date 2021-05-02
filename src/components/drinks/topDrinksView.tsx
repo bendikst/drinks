@@ -9,25 +9,14 @@ import { observe } from "mobx";
 import { observer, Observer } from "mobx-react-lite";
 
 
-const WidgetWrapper = styled.div`
-    display: flex;
-    padding: 3em;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    background: papayawhip;
-    border: 2px solid black;
-    border-radius: 3px;
-    width: 17em;
-`;
+const DRINKS_VIEW_WIDTH = '100%';
 
-const DRINKS_VIEW_WIDTH = '70%';
-
-const DrinksViewWrapper = styled.nav`
+const DrinksViewWrapper = styled.div`
     display: flex;
     width: ${DRINKS_VIEW_WIDTH};
-    margin: 24px auto 16px;
-    justify-content: space-between;
+    bottom: 0;
+    top: 5em;
+    position: absolute;
 `;
 
 export default class TopDrinksView extends React.Component {
@@ -57,17 +46,24 @@ export default class TopDrinksView extends React.Component {
             }
         });
 
-        const view = observer(({}) => {
-            return(
-                <DrinksViewWrapper>
-                    {drawElements}
-                </DrinksViewWrapper>
-            )
-        });
+        // const view = observer(({}) => {
+        //     return(
+        //         <DrinksViewWrapper>
+                
+        //         </DrinksViewWrapper>
+        //     )
+        // });
+
+        const view = (
+                        <DrinksViewWrapper>
+                            {drawElements}
+                       </DrinksViewWrapper>
+                       )
         return view;
     }
 
     public updateView() {
+        console.log("updating view");
         this.render();
     }
 

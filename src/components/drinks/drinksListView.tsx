@@ -6,17 +6,26 @@ import { DrinksViewController } from "./controller";
 import { Drink } from "./model";
 import SingleDrinkView from "./singleview";
 
-const WidgetWrapper = styled.div`
+const DrinkListWrapper = styled.div`
     display: flex;
-    padding: 3em;
     flex-wrap: wrap;
-    align-items: center;
+    background: ${ColorSet.NEON_GREEN};
+    border: 1px solid black;
+    border-radius: 1px;
+    flex: 1;
+    width: 100%;
+`;
+
+const DrinkListEntryWrapper = styled.div`
+    display: inline-block;
+    padding: 3em;
     cursor: pointer;
+    align-items: center;
     justify-content: space-between;
-    background: papayawhip;
-    border: 2px solid black;
-    border-radius: 3px;
-    width: 17em;
+    background: ${ColorSet.NEON_GREEN};
+    border: 1px solid black;
+    border-radius: 1px;
+    width: 100%;
 
     &:hover {
         color: ${ColorSet.BLUE_GROTTO}
@@ -32,7 +41,8 @@ export default class DrinksListView extends React.Component {
             selected: observable
             // actions/computed? 
         });
-        this.ctrl = ctrl;
+        //this.ctrl = ctrl;
+        this.ctrl = new DrinksViewController();
     }
 
     public handleClick(e: any, id: string) {
@@ -40,17 +50,19 @@ export default class DrinksListView extends React.Component {
         console.log(this.selected.toString())
     }
 
-    public initializeView(): JSX.Element{
+    public initializeView(){
         const tempdrinklist = this.ctrl.data.get().map((v: Drink) => 
-        <WidgetWrapper id={v.id} onClick={(e) => this.handleClick(e, v.id)}>{v.name}</WidgetWrapper>
+        <DrinkListEntryWrapper id={v.id} onClick={(e) => this.handleClick(e, v.id)}>{v.name}</DrinkListEntryWrapper>
         );
 
         return (
-            <ul>{tempdrinklist}</ul>
+            <DrinkListWrapper>
+                <ul>{tempdrinklist}</ul>
+            </DrinkListWrapper>
         );
     }
 
-    render(): JSX.Element {
+    render(){
         return this.initializeView();
     }
 }

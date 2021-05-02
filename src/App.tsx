@@ -4,6 +4,8 @@ import './App.css';
 import { RootStore } from './stores/rootStore';
 import { StoreContext } from './context/context';
 import Layout from './components/layout/Layout';
+import TopDrinksView from './components/drinks/topDrinksView';
+import DrinksListView from './components/drinks/drinksListView';
 
 // function App() {
 //   return (
@@ -44,7 +46,7 @@ export default class App extends React.Component<{rootStore?: RootStore}, {}> {
     return (
       <div className="App">
         <Layout>
-          <h3>Drinks</h3>
+          <TopDrinksView></TopDrinksView>
         </Layout>
 
         

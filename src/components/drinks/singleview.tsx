@@ -3,6 +3,7 @@ import { DrinksViewController } from "./controller";
 import { Drink } from "./model";
 import styled from 'styled-components';
 import { autorun, makeObservable, observable, action } from "mobx";
+import { ColorSet } from "../../resources/colors";
 
 
 const WidgetWrapper = styled.div`
@@ -11,10 +12,10 @@ const WidgetWrapper = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background: papayawhip;
-    border: 2px solid black;
-    border-radius: 3px;
-    width: 17em;
+    background: ${ColorSet.BLUE_GROTTO};
+    border: 1px solid black;
+    border-radius: 1px;
+    flex: 3;
 `;
 
 export default class SingleDrinkView extends React.Component {

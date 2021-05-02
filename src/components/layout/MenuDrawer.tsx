@@ -94,7 +94,7 @@ interface Props {
     toggleVisibility: () => void;
 }
 
-const MenuLabels = ["Weather alert", "Profile Settings", "Feedback"]
+const MenuLabels = ["Oblig hamburger meny", "Profile Settings", "Feedback"]
 
 
 const MenuDrawer: React.FC<Props> = ({isVisible, toggleVisibility}) => (
