@@ -7,7 +7,7 @@ const TopBarWrapper = styled.header`
     padding: 1em 1em;
     align-items: center;
     justify-content: space-between;
-    background-color: ${ColorSet.BLUE};
+    background-color: ${ColorSet.TOP};
 
     i {
         cursor: pointer;
@@ -15,7 +15,7 @@ const TopBarWrapper = styled.header`
         color: white;
         margin-right: 16px;
         &:hover {
-            color: ${ColorSet.BLUE_GROTTO}
+            color: ${ColorSet.ACCENT}
         }
     }
 `;
@@ -36,7 +36,7 @@ const MenuToggle = styled.span`
     height: 2px;
     background-color: white;
     border-radius: 3px;
-    background-color: ${ColorSet.BLUE_GROTTO};
+    background-color: ${ColorSet.ICON};
     position: relative;
     margin: auto;
     

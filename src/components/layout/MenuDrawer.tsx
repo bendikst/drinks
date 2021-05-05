@@ -13,7 +13,7 @@ const MenuDrawerWrapper = styled.div<isVisibleDiv>`
     height: 100%;
     position: fixed;
     top: 0;
-    background-color: white;
+    background-color: ${ColorSet.BODY};
     z-index: 12;
     transform: translateX(${props => props.isVisible ? 0 : '-100%'});
     transition: transform 0.15s ease-out;
@@ -48,14 +48,14 @@ const MenuLabel = styled.label`
     text-transform: uppercase;
     font-size: 20px;
     font-weight: bold;
-    color: ${ColorSet.IVORY};
+    color: ${ColorSet.TEXT};
     cursor: pointer;
 `;
 
 
 const MenuIcon = styled.i`
-    color: ${ColorSet.BLUE};
-    border: 3px solid ${ColorSet.BLUE_GROTTO};
+    color: ${ColorSet.ICON};
+    border: 3px solid ${ColorSet.ACCENT};
     border-radius: 50%;
     margin-left: 8px;
 `;
@@ -65,19 +65,19 @@ const MenuList = styled.ul`
     list-style: none;
 
     li:last-child {
-        border-bottom: 2px solid ${ColorSet.NEON_GREEN};
+        border-bottom: 2px solid black;
     }
 `;
 
 const MenuEntry = styled.li`
     font-size: 20px;
-    color: ${ColorSet.BLUE};
+    color: ${ColorSet.TEXT};
     cursor: pointer;
-    border-top: 2px solid ${ColorSet.BLUE_GROTTO};
+    border-top: 2px solid black;
     padding: 15% 10%;
     
     &:hover {
-        color: ${ColorSet.BLUE_GROTTO}
+        color: ${ColorSet.ACCENT}
     }
 `;
 
@@ -94,7 +94,7 @@ interface Props {
     toggleVisibility: () => void;
 }
 
-const MenuLabels = ["Oblig hamburger meny", "Profile Settings", "Feedback"]
+const MenuLabels = ["test", "Profile Settings", "Feedback"]
 
 
 const MenuDrawer: React.FC<Props> = ({isVisible, toggleVisibility}) => (

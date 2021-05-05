@@ -8,12 +8,13 @@ import { observer } from "mobx-react";
 
 
 const WidgetWrapper = styled.div`
+    color: ${ColorSet.TEXT};
     display: flex;
     padding: 3em;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background: ${ColorSet.BLUE_GROTTO};
+    background-color: ${ColorSet.BODY};
     border: 1px solid black;
     border-radius: 1px;
     flex: 3;

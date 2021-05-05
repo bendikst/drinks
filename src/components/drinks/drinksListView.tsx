@@ -7,29 +7,30 @@ import { DrinksViewController } from "./controller";
 import { Drink } from "./model";
 import SingleDrinkView from "./singleview";
 
-const DrinkListWrapper = styled.div`
+const DrinkListWrapper = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    background: ${ColorSet.NEON_GREEN};
+    background-color: ${ColorSet.SIDE};
     border: 1px solid black;
     border-radius: 1px;
     flex: 1;
     width: 100%;
 `;
 
-const DrinkListEntryWrapper = styled.div`
+const DrinkListEntryWrapper = styled.li`
+    color: ${ColorSet.TEXT};
     display: inline-block;
     padding: 3em;
     cursor: pointer;
     align-items: center;
     justify-content: space-between;
-    background: ${ColorSet.NEON_GREEN};
+    background: ${ColorSet.SIDE};
     border: 1px solid black;
     border-radius: 1px;
     width: 100%;
 
     &:hover {
-        color: ${ColorSet.BLUE_GROTTO}
+        color: ${ColorSet.ACCENT}
     }
 `;
 
