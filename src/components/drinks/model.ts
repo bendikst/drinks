@@ -39,11 +39,13 @@ export class IngredientList {
 }
 
 export class DrinkIngredient {
-    ingredient: string;
-    amount: number; // cl
-    constructor(ingredient: string, amount: number) {
+    public ingredient: string;
+    public amount: number;
+    public unit: string;
+    constructor(ingredient: string, amount: number, unit: string) {
         this.ingredient = ingredient;
         this.amount = amount;
+        this.unit = unit;
     }
 }
 

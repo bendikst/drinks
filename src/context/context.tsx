@@ -1,7 +1,7 @@
 import React, { FC, createContext, ReactNode, ReactElement } from 'react';
 import { RootStore } from '../stores/mod';
 
-export const StoreContext = createContext<RootStore>({} as RootStore);
+export const StoreContext = createContext<RootStore | undefined>(undefined);
 
 export type StoreComponent = FC<{
     store: RootStore;
@@ -13,6 +13,8 @@ export const StoreProvider: StoreComponent = ({
     children
 }): ReactElement => {
   return (
-    <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
+    <StoreContext.Provider value={store}>
+      {children}
+    </StoreContext.Provider>
   )
 }

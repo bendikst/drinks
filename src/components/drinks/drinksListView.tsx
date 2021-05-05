@@ -1,4 +1,5 @@
 import { observable, makeObservable, IObservableArray, autorun } from "mobx";
+import { observer } from "mobx-react";
 import React, { useState, Children } from "react";
 import styled from 'styled-components';
 import { ColorSet } from "../../resources/colors";
@@ -32,15 +33,16 @@ const DrinkListEntryWrapper = styled.div`
     }
 `;
 
+@observer
 export default class DrinksListView extends React.Component {
     public ctrl: DrinksViewController;
-    public selected: IObservableArray<string> = observable.array([]);
+    @observable public selected: IObservableArray<string> = observable.array([]);
     constructor(props: any, ctrl: DrinksViewController) {
         super(props);
-        makeObservable(this, {
-            selected: observable
-            // actions/computed? 
-        });
+        // makeObservable(this, {
+        //     selected: observable
+        //     // actions/computed? 
+        // });
         //this.ctrl = ctrl;
         this.ctrl = new DrinksViewController();
     }

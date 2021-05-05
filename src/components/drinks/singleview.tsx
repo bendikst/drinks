@@ -1,9 +1,10 @@
 import React from "react";
 import { DrinksViewController } from "./controller";
-import { Drink } from "./model";
+import { Drink, DrinkIngredient, Language } from "./model";
 import styled from 'styled-components';
-import { autorun, makeObservable, observable, action } from "mobx";
+import { autorun, makeObservable, observable, action, reaction } from "mobx";
 import { ColorSet } from "../../resources/colors";
+import { observer } from "mobx-react";
 
 
 const WidgetWrapper = styled.div`
@@ -18,9 +19,10 @@ const WidgetWrapper = styled.div`
     flex: 3;
 `;
 
+@observer
 export default class SingleDrinkView extends React.Component {
     public ctrl: DrinksViewController;
-    public drink: Drink | undefined;
+    @observable public drink: Drink | undefined;
 
     constructor(props: any, ctrl: DrinksViewController, drink?: Drink) {
         super(props);
@@ -30,25 +32,23 @@ export default class SingleDrinkView extends React.Component {
         })
         this.ctrl = ctrl;
         this.drink = drink;
-        autorun(() => {
-            console.log("New drink: ", this.drink?.name)
-            this.initializeView();
-        });
     }
 
     public initializeView(): JSX.Element {
         let drawElements: JSX.Element[] = [];
+        
         if(this.drink) {
-            drawElements.push(<b>{this.drink.name}</b>);
-            drawElements.push(<b>{this.drink.ingredients}</b>);
-            drawElements.push(<b>{this.drink.steps}</b>);
+            drawElements.push(<h1>{this.drink.name}</h1>);
+            drawElements.push(<div>{this.drink.ingredients.spirits.map((ingredient: DrinkIngredient) => <ul>{ingredient.ingredient}: {ingredient.amount} {ingredient.unit}</ul>)}</div>);
+            drawElements.push(<div>{this.drink.ingredients.secondaries.map((ingredient: DrinkIngredient) => <ul>{ingredient.ingredient}: {ingredient.amount} {ingredient.unit}</ul>)}</div>);
+            drawElements.push(<div>{this.drink.steps.steps.get(Language.NOR)?.map(step => <ul>{step}</ul>)}</div>);
         }
         else {
             drawElements.push(<b>No drink selected.</b>);
         }
         return (
         <WidgetWrapper>
-            {drawElements}
+            <ul>{drawElements}</ul>
         </WidgetWrapper>
         )
     }

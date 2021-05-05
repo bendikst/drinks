@@ -5,8 +5,9 @@ import styled from 'styled-components';
 import { ColorSet } from "../../resources/colors";
 import DrinksListView from "./drinksListView";
 import SingleDrinkView from "./singleview";
-import { observe } from "mobx";
-import { observer, Observer } from "mobx-react-lite";
+import { observable, observe } from "mobx";
+import { observer } from "mobx-react";
+import { RootStore } from "../../stores/rootStore";
 
 
 const DRINKS_VIEW_WIDTH = '100%';
@@ -19,10 +20,11 @@ const DrinksViewWrapper = styled.div`
     position: absolute;
 `;
 
-export default class TopDrinksView extends React.Component {
+@observer
+export default class TopDrinksView extends React.Component/*<{store: RootStore}, any>*/ {
     public ctrl: DrinksViewController;
-    public drinksListView: DrinksListView;
-    public singleDrinkView: SingleDrinkView;
+    @observable public drinksListView: DrinksListView;
+    @observable public singleDrinkView: SingleDrinkView;
 
 
     constructor(props: any) {
@@ -42,29 +44,16 @@ export default class TopDrinksView extends React.Component {
         observe(this.drinksListView.selected, (change) => {
             if(change.type === "splice"){
                 this.singleDrinkView.updateDrink(this.ctrl.data.getDrink(change.added[0]));
-                this.updateView();
+                //this.updateView();
             }
         });
 
-        // const view = observer(({}) => {
-        //     return(
-        //         <DrinksViewWrapper>
-                
-        //         </DrinksViewWrapper>
-        //     )
-        // });
-
         const view = (
-                        <DrinksViewWrapper>
-                            {drawElements}
-                       </DrinksViewWrapper>
-                       )
+            <DrinksViewWrapper>
+                {drawElements}
+            </DrinksViewWrapper>
+            )
         return view;
-    }
-
-    public updateView() {
-        console.log("updating view");
-        this.render();
     }
 
     render() {

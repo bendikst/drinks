@@ -1,7 +1,7 @@
 import * as d from "../components/drinks/model";
 
-const lime = new d.DrinkIngredient("Lime", 30);
-const vodka = new d.DrinkIngredient("Vodka", 40);
+const lime = new d.DrinkIngredient("Lime", 30, "cl");
+const vodka = new d.DrinkIngredient("Vodka", 40, "cl");
 
 const ingredients = new d.IngredientList([vodka], [lime]);
 
